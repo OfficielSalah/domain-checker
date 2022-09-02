@@ -1,0 +1,14 @@
+x=3 17576
+1m23
+211 dps
+133 registered 
+
+x=3 17576
+5m9s
+57 dps
+307 registered
+
+x=4 456976
+17m9s
+444 dps
+186 registered
