@@ -59,7 +59,7 @@ const checkAvailable = async (url) => {
     await Promise.all(created);
     console.log("URLS Saved On DATABASE");
   } catch (error) {
-    console.log(err);
+    console.log(error);
   }
 
   console.log(registered);
