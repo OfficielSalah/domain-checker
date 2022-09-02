@@ -2,6 +2,7 @@ const { Resolver } = require("dns/promises");
 const { characters, tlds } = require("../constant");
 const { generateDomainName } = require("../utils");
 const Domain = require("../models/Domain");
+var mongoose = require("mongoose");
 
 const resolver = new Resolver();
 
