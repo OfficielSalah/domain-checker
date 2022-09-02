@@ -64,5 +64,5 @@ const checkAvailable = async (url) => {
 
   console.log(registered);
   console.log(registered.length);
-  process.exit();
+  mongoose.connection.close();
 })();
