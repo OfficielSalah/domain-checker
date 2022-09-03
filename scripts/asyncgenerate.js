@@ -29,6 +29,7 @@ const checkAvailable = async (url) => {
 (async function () {
   try {
     let promises = [];
+    let numberofrequests = 1000;
     let i = 0;
     for (let tld of tlds) {
       let domains = generateDomainName2(X, characters);
@@ -36,13 +37,11 @@ const checkAvailable = async (url) => {
         let url = domains.next().value;
         promises.push(checkAvailable(url + "." + tld));
         i++;
-        if (i % 5000 === 0) {
+        if (i % numberofrequests === 0) {
           await Promise.all(promises);
           promises = [];
           console.log(registered);
           console.log(registered.length);
-          mongoose.connection.close();
-          process.exit();
         }
       }
     }
