@@ -27,27 +27,6 @@ const characters = [
   "z",
 ];
 
-const tlds = [
-  "com",
-  "net",
-  "org",
-  "jp",
-  "de",
-  "uk",
-  "fr",
-  "br",
-  "it",
-  "ru",
-  "es",
-  "me",
-  "gov",
-  "pl",
-  "ca",
-  "au",
-  "cn",
-  "co",
-  "in",
-  "nl",
-];
+const tlds = ["com", "net", "org", "co", "us"];
 
 module.exports = { characters, tlds };
