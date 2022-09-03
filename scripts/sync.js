@@ -6,8 +6,11 @@ const resolver = new Resolver();
 
 let registered = [];
 
-let X = 3;
+let X = 5;
 let domains = generateDomainName(X, characters);
+
+console.log(domains.length);
+console.log("domains generated");
 
 const checkAvailable = (url) => {
   resolver.resolve4(url, (err, addresses) => {

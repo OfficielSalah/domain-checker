@@ -1,6 +1,6 @@
 const { Resolver } = require("dns/promises");
 const { characters, tlds } = require("../constant");
-const { generateDomainName } = require("../utils");
+const { generateDomainName2 } = require("../utils");
 const Domain = require("../models/Domain");
 var mongoose = require("mongoose");
 
@@ -10,11 +10,7 @@ let registered = [];
 
 require("../db");
 
-let X = 4;
-let domains = generateDomainName(X, characters);
-
-console.log(domains.length);
-console.log("domains generated");
+let X = 6;
 
 const checkAvailable = async (url) => {
   await resolver
@@ -35,13 +31,19 @@ const checkAvailable = async (url) => {
     let promises = [];
     let i = 0;
     for (let tld of tlds) {
-      for (let domain of domains) {
-        promises.push(checkAvailable(domain + "." + tld));
-      }
-      i++;
-      if (i % 2 === 0) {
-        await Promise.all(promises);
-        promises = [];
+      let domains = generateDomainName2(X, characters);
+      for (let j = 0; j < 308915776; j++) {
+        let url = domains.next().value;
+        console.log("url : " + url);
+        promises.push(checkAvailable(url + "." + tld));
+        i++;
+        if (i % 1000 === 0) {
+          await Promise.all(promises);
+          promises = [];
+          console.log(registered);
+          console.log(registered.length);
+          break;
+        }
       }
     }
     if (promises.length > 0) {

@@ -10,7 +10,7 @@ let registered = [];
 
 require("../db");
 
-let X = 4;
+let X = 5;
 let domains = generateDomainName(X, characters);
 
 console.log(domains.length);
@@ -33,19 +33,14 @@ const checkAvailable = async (url) => {
 (async function () {
   try {
     let promises = [];
-    let i = 0;
     for (let tld of tlds) {
       for (let domain of domains) {
         promises.push(checkAvailable(domain + "." + tld));
       }
-      i++;
-      if (i % 2 === 0) {
-        await Promise.all(promises);
-        promises = [];
-      }
-    }
-    if (promises.length > 0) {
       await Promise.all(promises);
+      promises = [];
+      console.log(registered);
+      console.log(registered.length);
     }
   } catch (err) {}
   try {
