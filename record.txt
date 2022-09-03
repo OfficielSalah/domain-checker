@@ -1,14 +1,85 @@
-x=3 17576
-1m23
-211 dps
-133 registered 
+script : sync
+length : 3
+domains : 17576
+registered : 86
+time : 78 s
+dps : 225
 
-x=3 17576
-5m9s
-57 dps
-307 registered
+script : sync
+length : 4
+domains : 456976
+registered :15
+time : 266 s
+dps : 2022
 
-x=4 456976
-17m9s
-444 dps
-186 registered
+script : sync
+length : 5
+heap memory while making requests
+
+script : async
+length : 3
+domains : 17576
+registered :83
+time : 77 s
+dps : 228
+
+script : async
+length : 4
+heap memory while making requests
+
+script : asyncrate
+length : 3
+domains : 17576
+i = 10
+registered : 107
+time :  83s
+dps : 211
+
+script : asyncrate
+length : 4
+domains : 456976
+i = 10
+heap memory while making requests
+
+script : asyncrate
+length : 4
+domains : 456976
+i = 2
+registered :103
+time :  545
+dps : 838
+
+(trying to improve performance accuracy)
+script : asyncratepertld
+length : 4
+domains : 456976
+registered :383
+canceled after two iratetions
+
+script : asyncratepertld
+length : 5
+domains : 11881376
+heap memory while making requests
+
+script : above4
+length : 5
+domains : 11881376
+i = 50000
+registered :198
+time :  95 s
+dps : 1757
+
+script : above4
+length : 6
+heap memory while generating domains
+
+script : asyncgenerate best script
+length : 6 (infinity possible)
+domains : 308915776
+
+script : asyncgenerate
+length : 4
+domains : 456976
+i = 10000
+time :  s
+registered : 
