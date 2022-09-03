@@ -10,7 +10,7 @@ let registered = [];
 
 require("../db");
 
-let X = 6;
+let X = 4;
 
 const checkAvailable = async (url) => {
   await resolver
@@ -32,23 +32,25 @@ const checkAvailable = async (url) => {
     let i = 0;
     for (let tld of tlds) {
       let domains = generateDomainName2(X, characters);
-      for (let j = 0; j < 308915776; j++) {
+      for (let j = 0; j < Math.pow(26, X); j++) {
         let url = domains.next().value;
-        console.log("url : " + url);
         promises.push(checkAvailable(url + "." + tld));
         i++;
-        if (i % 1000 === 0) {
+        if (i % 5000 === 0) {
           await Promise.all(promises);
           promises = [];
           console.log(registered);
           console.log(registered.length);
-          break;
+          mongoose.connection.close();
+          process.exit();
         }
       }
     }
     if (promises.length > 0) {
       await Promise.all(promises);
     }
+    console.log(registered);
+    console.log(registered.length);
   } catch (err) {}
   try {
     let created = [];
